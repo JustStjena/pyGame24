@@ -1,12 +1,21 @@
 import pygame
 
+
 class Ball():
     def __init__(self, pos, radius):
-        #стартовые атрибуты шарика
+        pass
+        # стартовые атрибуты шарика
+
     def move(self):
-        #изменение атрибутов шарика при движении
+        pass
+        # изменение атрибутов шарика при движении
+
     def draw(self):
-        #отрисовка шарика по атрибутам
+        pass
+        # отрисовка шарика по его атрибутам
+
+
+# отрисовка шарика по атрибутам
 
 
 if __name__ == '__main__':
@@ -15,17 +24,17 @@ if __name__ == '__main__':
     screen = pygame.display.set_mode(size)
     fps = 60
     clock = pygame.time.Clock()
-    balls=[]  #Заводим коллекцию, в оторой будем хранить нарисованные шарики
+    balls = []  # Заводим коллекцию, в которой будем хранить нарисованные шарики
     running = True
     while running:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = False
             if event.type == pygame.MOUSEBUTTONDOWN:
-                #Добавить экземпляр класса Ball в коллекцию balls
+        # Добавить экземпляр класса Ball в коллекцию balls
         for ball in balls:
-            #Подвинуть шарик
-            #Отрисовать шарик
+        # Подвинуть шарик
+        # Отрисовать шарик
 
         clock.tick(fps)
         pygame.display.flip()
