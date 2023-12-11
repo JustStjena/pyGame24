@@ -35,21 +35,31 @@ if __name__ == '__main__':
     fps = 60
     clock = pygame.time.Clock()
     all_sprites = pygame.sprite.Group()
+    new_bomb_group=pygame.sprite.Group()
     running = True
     flag = False
+    pos=(0,0)
     while running:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = False
             if event.type == pygame.MOUSEBUTTONDOWN:
                 flag = True
-                bomb = Bomb(event.pos, all_sprites)
+                bomb = Bomb(event.pos, new_bomb_group)
+
+                if pygame.sprite.spritecollideany(bomb,all_sprites) is not None:
+                    pygame.sprite.spritecollideany(bomb,all_sprites).bang()
+                else:
+                    Bomb(event.pos, all_sprites)
+
             if event.type == pygame.KEYDOWN:
                 for bomb in all_sprites:
                     bomb.bang()
 
-        if flag:
-            all_sprites.draw(screen)
+
+        all_sprites.draw(screen)
+        new_bomb_group.draw(screen)
+
         clock.tick(fps)
         pygame.display.flip()
     pygame.quit()
