@@ -5,6 +5,7 @@ import pygame
 
 from Player import Player
 from Tile import Tile
+from settings import max_y, max_x
 
 
 def load_image(name, colorkey=None, size=None):
@@ -50,17 +51,11 @@ def generate_level(level, tile_group, player_group, tile_images, player_image):
             elif level[y][x] == '@':
                 Tile(tile_images, 'empty', x, y, tile_group)
                 new_player = Player(player_image, x, y, player_group)
-                # level[y][x] = "."
-    return new_player, x, y
+    return new_player
 
 
-def move(hero, level_map, movement, max_x, max_y):
+def move(hero, level_map, movement):
     x, y = hero.pos
-    print(level_map[x][y - 1])
-    print(level_map[x][y + 1])
-    print(level_map[x - 1][y])
-    print(level_map[x][y + 1])
-    print()
     if movement == "up":
         if y > 0 and level_map[y - 1][x] == ".":
             hero.move(x, y - 1)
